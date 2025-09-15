@@ -1,0 +1,82 @@
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 0 0 0;
+        height: auto;
+    }
+
+    header .nav .logo {
+        width: 80%;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    header .nav .nav-links {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .header__hero {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .header__hero--text {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .header__hero--text p {
+        margin: 20px 0 30px 0;
+        font-size: 24px;
+    }
+
+    .header__hero--text h1 {
+        font-size: 50px;
+    }
+
+    .header__hero--image {
+        height: fit-content;
+        width: 100%;
+    }
+
+    .header__hero--image svg {
+        height: 300px;
+        width: 300px;
+    }
+
+    /* Primera seccion - Resumen profesional */
+
+    .description .description__text {
+        width: 90%;
+        margin: 0;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .description .description__image {
+        padding-top: 0px;
+        /* background-color: red; */
+        width: 100%;
+        text-align: center;
+    }
+
+    .description .description__image svg {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Seccion de tecnologias */
+
+    .tech h3 {
+        margin-top: 40px;
+    }
+
+    .card  {
+        width: 400px;
+    }
+}
