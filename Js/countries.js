@@ -19,13 +19,12 @@ fetch(url)
     .then(response => response.json())
     .then(url => {
         url.data.forEach(element => {
-            console.log(element);
             document.querySelector('.countries').innerHTML += `
                 <div class="countries__card">
                     <figure>
                         <img src="${element.URL}" alt="Colombia Flag">
                     </figure>
-                    <a href="../Pages/detail.html?=${element.id}">${element.nombre}</a>
+                    <a href="../Pages/detail.html?id=${element.id}">${element.nombre}</a>
                 </div>
             `;
         });

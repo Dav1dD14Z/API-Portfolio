@@ -40,13 +40,20 @@
     }
 
     .header__hero--image {
-        height: fit-content;
+        height: 50%;
         width: 100%;
     }
 
     .header__hero--image svg {
         height: 300px;
         width: 300px;
+    }
+
+    
+    .header__hero--image img {
+        width: 280px;
+        height: 190px;
+        padding-bottom: 15px;
     }
 
     /* Primera seccion - Resumen profesional */
@@ -78,5 +85,41 @@
 
     .card  {
         width: 400px;
+    }
+
+    /* Seccion detalle de cada pais */
+
+    .detail__flag {
+        width: 80%;
+        text-align: center;
+    }
+
+    .detail__text {
+        width: 90%;
+        text-align: center;
+    }
+
+    .detail__text p {
+        margin-bottom: 40px;
+    }
+
+    /* Seccion del mapa y video */
+
+    .detail__map--container {
+        width: 90%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .detail__map--container #map {
+        height: 300px;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .detail__map--video {
+        width: 90%;
+        text-align: center;
+        justify-content: center;
     }
 }
