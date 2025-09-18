@@ -50,8 +50,5 @@ fetch(apiURL)
         const videoContainer = document.querySelector('.detail__map--video');
         videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/${data.video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
 
-        // Cambiar imagen del Header
-        const headerImage = document.querySelector(".header__hero--image")
-        headerImage.innerHTML = `<img src="${data.url}" alt="Image of ${data.nombre}">`
     })
     .catch(error => console.error('Error fetching country data:', error));

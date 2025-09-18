@@ -45,15 +45,9 @@
     }
 
     .header__hero--image svg {
+        margin: 0 auto;
         height: 300px;
         width: 300px;
-    }
-
-    
-    .header__hero--image img {
-        width: 280px;
-        height: 190px;
-        padding-bottom: 15px;
     }
 
     /* Primera seccion - Resumen profesional */
@@ -85,6 +79,10 @@
 
     .card  {
         width: 400px;
+    }
+
+    .tech .card__container {
+        margin-bottom: 30px;
     }
 
     /* Seccion detalle de cada pais */
@@ -121,5 +119,14 @@
         width: 90%;
         text-align: center;
         justify-content: center;
+    }
+
+    /* Seccion de Project cards */
+    .projects h3 {
+        margin-bottom: 30px;
+    }
+
+    .projects__card {
+        margin: 20px 0;
     }
 }

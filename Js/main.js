@@ -1,4 +1,5 @@
 import data from '../Data/skills.js';
+import projects from '../Data/projects.js';
 import Header from './Components/header.js';
 
 // Template del Header
@@ -32,6 +33,24 @@ data.forEach(item => {
     container.appendChild(card);   
 });
 
+// Cards de proyectos
+const projects_Element = document.querySelector(".projects__container")
+projects.forEach(item => {
+    const card = document.createElement("div");
+    card.classList.add("projects__card")
+    card.innerHTML= `
+        <img src="${item.url}" alt="${item.title}">
+        <div class="projects__card--info">
+            <h4>${item.title}</h4>
+            <p>${item.description}</p>
+            <div class="projects__card--links">
+                <a href="${item.link_1}">Live Demo</a>
+                <a href="${item.link_2}">Source Code</a>
+            </div>
+        </div>
+    `;
+    projects_Element.appendChild(card)
+})
 
 
 
