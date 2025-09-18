@@ -1,6 +1,6 @@
 function Header(text_1, text_2, text_3, link_1, link_2, link_3) {
         return `<nav class="nav">
-                <a href="./index.html" class="logo">
+                <a href="${link_1}" class="logo">
                     <span>&lt;</span> David Diaz <span>/&gt;</span>
                 </a>
                 <ul class="nav-links">

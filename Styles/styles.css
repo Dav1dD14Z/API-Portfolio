@@ -563,3 +563,63 @@ header .nav .nav-links li a:hover {
     background-color: rgba(249, 168, 38, 0.611);
     transition: 0.3s;
 }
+
+/* Seccion del Formulario */
+.form__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 50px 50px 50px;
+}
+
+#dataForm {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 70%;
+}
+
+/* Etiquetas */
+#dataForm label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: black;
+}
+
+/* Campos de entrada */
+#dataForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+    font-size: 14px;
+}
+
+/* Efecto al enfocar inputs */
+#dataForm input:focus {
+    border-color: var(--yellow);
+    outline: none;
+    box-shadow: 0 0 5px var(--yellow);
+}
+
+/* Botón */
+#dataForm button {
+    width: 100%;
+    padding: 12px;
+    background: var(--yellow);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Efecto hover en el botón */
+#dataForm button:hover {
+    background: #f9a826be;
+}

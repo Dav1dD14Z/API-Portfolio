@@ -30,3 +30,31 @@ fetch(url)
         });
     })
     .catch(error => console.error('Error:', error));
+
+
+    // POST API
+document.getElementById("dataForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    // Capturamos los datos del formulario
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData.entries()); // Convierte a objeto
+
+    try {
+        const response = await fetch("http://127.0.0.1:8000/countries", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            alert("El pais fue agregado!");
+        } else {
+            alert("El pais no fue agregado");
+        }
+    } catch (error) {
+        console.error("Error en la conexión:", error);
+    }
+});
