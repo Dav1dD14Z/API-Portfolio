@@ -84,3 +84,21 @@ def obtener_pais(countrie_id: int):
         "longitud": row[5],
         "video": row[6]
     }
+
+@app.delete("/countries/{countrie_id}")
+def eliminar_pais(countrie_id: int):
+    conn = sqlite3.connect('miwebsite.db')
+    cursor = conn.cursor()
+    
+    # Check if country exists
+    cursor.execute('SELECT id FROM countries WHERE id = ?', (countrie_id,))
+    if cursor.fetchone() is None:
+        conn.close()
+        raise HTTPException(status_code=404, detail="País no encontrado")
+    
+    # Delete the country
+    cursor.execute('DELETE FROM countries WHERE id = ?', (countrie_id,))
+    conn.commit()
+    conn.close()
+    
+    return {"message": f"País con ID {countrie_id} eliminado correctamente"}
