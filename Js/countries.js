@@ -20,11 +20,14 @@ fetch(url)
     .then(url => {
         url.data.forEach(element => {
             document.querySelector('.countries').innerHTML += `
-                <div class="countries__card">
+                <div class="countries__card" data-id="${element.id}">
                     <figure>
                         <img src="${element.URL}" alt="Colombia Flag">
                     </figure>
-                    <a href="../Pages/detail.html?id=${element.id}">${element.nombre}</a>
+                    <div class="countries__card--info">
+                        <a href="../Pages/detail.html?id=${element.id}">${element.nombre}</a>
+                        <button class="countries__card--delete">Eliminar</button>
+                    </div>
                 </div>
             `;
         });
@@ -58,3 +61,29 @@ document.getElementById("dataForm").addEventListener("submit", async function(e)
         console.error("Error en la conexión:", error);
     }
 });
+
+// DELETE API
+document.addEventListener("click", async function(e) {
+    if (e.target.classList.contains("countries__card--delete")) {
+        const card = e.target.closest(".countries__card");
+        const id = card.dataset.id;
+
+        if (confirm("¿Seguro que quieres eliminar este país?")) {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/countries/${id}`, {
+                    method: "DELETE"
+                });
+
+                if (response.ok) {
+                    alert("País eliminado correctamente");
+                    card.remove(); // Eliminar del DOM
+                } else {
+                    alert("Error al eliminar el país");
+                }
+            } catch (error) {
+                console.error("Error en la conexión:", error);
+            }
+        }
+    }
+});
+

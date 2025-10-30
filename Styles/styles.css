@@ -358,18 +358,26 @@ header .nav .nav-links li a:hover {
     object-fit: cover;
 }
 
-.countries__card a {
+.countries__card a, .countries__card--delete {
     text-decoration: none;
     color: white;
     background-color: var(--purple);
-    padding: 10px 80px;
+    padding: 7px 35px;
+    margin: 0 10px 0 10px;
     border-radius: 20px;
     font-size: 18px;
     transition: 0.3s;
     text-align: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
 
 .countries__card:nth-child(even) a {
+    background-color: var(--yellow);
+}
+
+.countries__card:nth-child(odd) .countries__card--delete {
     background-color: var(--yellow);
 }
 
@@ -378,7 +386,7 @@ header .nav .nav-links li a:hover {
     transition: 0.3s;
 }
 
-.countries__card:nth-child(even):hover a {
+.countries__card:hover .countries__card--delete {
     background-color: var(--purple);
     transition: 0.3s;
 }
