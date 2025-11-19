@@ -25,7 +25,7 @@ fetch(url)
                         <img src="${element.URL}" alt="Colombia Flag">
                     </figure>
                     <div class="countries__card--info">
-                        <a href="../Pages/detail.html?id=${element.id}">${element.nombre}</a>
+                        <a href="../Pages/landing.html?id=${element.id}">${element.nombre}</a>
                         <button class="countries__card--delete">Eliminar</button>
                     </div>
                 </div>

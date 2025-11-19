@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing | Country</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../Styles/landing/styles.css">
+    <link rel="stylesheet" href="../Styles/landing/styles.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
     <header class="landing__header">
@@ -21,7 +23,6 @@
             </ul>
         </nav>
         <section class="landing__header--hero">
-            <h1>Colombia</h1>
         </section>
     </header>
     
@@ -37,18 +38,18 @@
             </div>
         </div>
     </section>
-
+    
     <section class="landing__gallery">
-        <h2>Lugares Turisticos </h2>
+        <h2>Touristic Places</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/8264573/pexels-photo-8264573.jpeg" />
-            </div>
-            <div class="swiper-slide">
-                <img src="https://images.pexels.com/photos/2884864/pexels-photo-2884864.jpeg" />
-            </div>
-            <div class="swiper-slide">
+                <div class="swiper-slide">
+                    <img src="https://images.pexels.com/photos/8264573/pexels-photo-8264573.jpeg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.pexels.com/photos/2884864/pexels-photo-2884864.jpeg" />
+                </div>
+                <div class="swiper-slide">
                 <img src="https://images.pexels.com/photos/3075974/pexels-photo-3075974.jpeg" />
             </div>
             <div class="swiper-slide">
@@ -63,12 +64,23 @@
             <div class="swiper-slide">
                 <img src="https://images.pexels.com/photos/7613835/pexels-photo-7613835.jpeg" />
             </div>
-            </div>
+        </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <section class="detail__map">
+        <h2>More Information</h2>
+        <div class="detail__map--container">
+            <div id="map"></div>
+        </div>
+        <div class="detail__map--video">
+            <iframe src="https://www.youtube.com/embed/LxsMdHrNS-o?si=JlCzfaNq9ymUxF5h"></iframe>
+        </div>
+    </section>
+    
     <script type="module" src="../Js/landing.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </body>
 </html>
