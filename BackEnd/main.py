@@ -29,11 +29,20 @@ def create_db():
         CREATE TABLE IF NOT EXISTS countries (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             name TEXT NOT NULL,
-            description TEXT NOT NULL,
+            description1 TEXT NOT NULL,
+            description2 TEXT NOT NULL,
             flag_url TEXT NOT NULL,
             latitude REAL,
             longitude REAL,
-            video_url TEXT
+            video_url TEXT,
+            img1 TEXT,
+            img2 TEXT, 
+            img3 TEXT,
+            img4 TEXT,
+            img5 TEXT,
+            img6 TEXT,
+            img7 TEXT,
+            BckImage TEXT
         )''')
     conn.commit()
     conn.close()
@@ -44,8 +53,8 @@ def crear_producto(countrie: Countrie):
     conn = sqlite3.connect('miwebsite.db')
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO countries (name, description, flag_url, latitude, longitude, video_url) VALUES (?, ?, ?, ?, ?, ?)
-    ''', (countrie.name, countrie.description, countrie.flag_url, countrie.latitude, countrie.longitude, countrie.video_url))
+        INSERT INTO countries (name, description1, description2, flag_url, latitude, longitude, video_url, img1, img2, img3, img4, img5, img6, img7, BckImage) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+    ''', (countrie.name, countrie.description1, countrie.description2, countrie.flag_url, countrie.latitude, countrie.longitude, countrie.video_url, countrie.img1, countrie.img2, countrie.img3, countrie.img4, countrie.img5, countrie.img6, countrie.img7, countrie.BckImage))
     conn.commit()
     conn.close()
     return {
@@ -57,18 +66,18 @@ def crear_producto(countrie: Countrie):
 def listar_countries():
     conn = sqlite3.connect('miwebsite.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT id, name, description, flag_url, latitude, longitude, video_url FROM countries')
+    cursor.execute('SELECT id, name, description1, description2, flag_url, latitude, longitude, video_url, img1, img2, img3, img4, img5, img6, img7, BckImage FROM countries')
     countries = cursor.fetchall()
     conn.close()
     return {
-        "data": [{"id": row[0], "nombre": row[1], "descripcion": row[2], "URL": row[3], "latitud": row[4], "longitud": row[5], "video": row[6]} for row in countries]
+        "data": [{"id": row[0], "nombre": row[1], "descripcion1": row[2], "descripcion2": row[3] , "URL": row[4], "latitud": row[5], "longitud": row[6], "video": row[7], "img1": row[8], "img2": row[9], "img3": row[10], "img4": row[11], "img5": row[12], "img6": row[13], "img7": row[14], "background": row[15]} for row in countries]
     }
 
 @app.get("/countries/{countrie_id}")
 def obtener_pais(countrie_id: int):
     conn = sqlite3.connect('miwebsite.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT id, name, description, flag_url, latitude, longitude, video_url FROM countries WHERE id = ?', (countrie_id,))
+    cursor.execute('SELECT id, name, description1, description2, flag_url, latitude, longitude, video_url, img1, img2, img3, img4, img5, img6, img7, BckImage FROM countries WHERE id = ?', (countrie_id,))
     row = cursor.fetchone()
     conn.close()
 
@@ -78,11 +87,20 @@ def obtener_pais(countrie_id: int):
     return {
         "id": row[0],
         "nombre": row[1],
-        "descripcion": row[2],
-        "url": row[3], 
-        "latitud": row[4],
-        "longitud": row[5],
-        "video": row[6]
+        "descripcion1": row[2],
+        "descripcion2": row[3],
+        "url": row[4], 
+        "latitud": row[5],
+        "longitud": row[6],
+        "video": row[7],
+        "img1": row[8],
+        "img2": row[9],
+        "img3": row[10],
+        "img4": row[11],
+        "img5": row[12],
+        "img6": row[13],
+        "img7": row[14],    
+        "background": row[15]
     }
 
 @app.delete("/countries/{countrie_id}")

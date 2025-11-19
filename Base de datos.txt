@@ -1,0 +1,35 @@
+Colombia: 
+ - https://flagcdn.com/w320/co.png
+ - Lat: 4.570868
+ - Long: -74.297333
+ - Video url: LxsMdHrNS-o?si=JlCzfaNq9ymUxF5h
+
+Uruguay: 
+ - https://flagcdn.com/w320/uy.png
+ - Lat: -32.522778
+ - Long: -55.765835
+ - Video url: iY4k3DUdP1A?si=dbGS0taii9ErzwJ_
+
+Perú: 
+ - https://flagcdn.com/w320/pe.png
+ - Lat: -9.189967
+ - Long: -75.015152
+ - Video url: 9vgm-9kde5E?si=KgW0KjDYs0WyoV-m
+
+Bolivia: 
+ - https://flagcdn.com/w320/bo.png
+ - Lat: -16.290154
+ - Long: -63.588654
+ - Video url: VhGvc4Yu9r0?si=GCdlk7FnEDClCyMP
+
+Venezuela: 
+ - https://flagcdn.com/w320/ve.png
+ - Lat: 6.42375
+ - Long: -66.589729
+ - Video url: p8tNI68R3oM?si=myVwZluP0POHrGEI
+
+Chile: 
+ - https://flagcdn.com/w320/cl.png
+ - Lat: -35.675148
+ - Long: -71.542969
+ - Video url: 6UQZ1wp4a9Q?si=3oJmtPYM8oAToxuc

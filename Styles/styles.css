@@ -11,6 +11,14 @@
     font-family: Arial, sans-serif;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
 span {
     color: var(--yellow);
 }
