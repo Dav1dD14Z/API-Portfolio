@@ -134,7 +134,7 @@ def create_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             username TEXT NOT NULL,
             password TEXT NOT NULL,
-            status TEXT NOT NULL
+            status INTEGER NOT NULL
         )''')
     conn.commit()
     conn.close()
