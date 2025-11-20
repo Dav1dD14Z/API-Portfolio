@@ -60,7 +60,6 @@ fetch(url)
 document.getElementById("dataForm").addEventListener("submit", async function(e) {
     e.preventDefault();
 
-    // Capturamos los datos del formulario
     const formData = new FormData(this);
     const data = Object.fromEntries(formData.entries()); // Convierte a objeto
 
