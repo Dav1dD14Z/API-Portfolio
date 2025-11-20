@@ -120,22 +120,3 @@ def eliminar_pais(countrie_id: int):
     conn.close()
     
     return {"message": f"País con ID {countrie_id} eliminado correctamente"}
-
-# update country description
-@app.put("/countries/{countrie_id}")
-def actualizar_descripcion_pais(countrie_id: int, description: str = Form(...)):
-    conn = sqlite3.connect('miwebsite.db')
-    cursor = conn.cursor()
-    
-    # Check if country exists
-    cursor.execute('SELECT id FROM countries WHERE id = ?', (countrie_id,))
-    if cursor.fetchone() is None:
-        conn.close()
-        raise HTTPException(status_code=404, detail="País no encontrado")
-    
-    # Update the description
-    cursor.execute('UPDATE countries SET description = ? WHERE id = ?', (description, countrie_id))
-    conn.commit()
-    conn.close()
-    
-    return {"message": f"Descripción del país con ID {countrie_id} actualizada correctamente"}
