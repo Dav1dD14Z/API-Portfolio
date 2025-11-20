@@ -12,8 +12,27 @@ const header_data  = {
 }
 header_Element.innerHTML = Header(header_data.text_1, header_data.text_2, header_data.text_3, header_data.link_1, header_data.link_2, header_data.link_3);
 
-// Fetch a la API 
+// Identificación de usuario (Login)
+function applyRestrictions() {
+    const status = localStorage.getItem("status");
+    const formElement = document.getElementById("dataForm");
+    const buttons = document.querySelectorAll(".countries__card--delete");
+    const link = document.querySelectorAll(".countries__card--links");
 
+    if (status === "0") {
+        formElement.style.display = "none";
+    
+        buttons.forEach(btn => {
+            btn.style.display = "none";
+        });
+
+        link.forEach(lnk => {
+            lnk.style.padding = "7px 107px";
+        });
+    }
+}
+
+// Fetch a la API 
 const url = "http://127.0.0.1:8000/countries"
 fetch(url)
     .then(response => response.json())
@@ -25,11 +44,13 @@ fetch(url)
                         <img src="${element.URL}" alt="Colombia Flag">
                     </figure>
                     <div class="countries__card--info">
-                        <a href="../Pages/landing.html?id=${element.id}">${element.nombre}</a>
+                        <a class="countries__card--links" href="../Pages/landing.html?id=${element.id}">${element.nombre}</a>
                         <button class="countries__card--delete">Eliminar</button>
                     </div>
                 </div>
             `;
+
+            applyRestrictions();
         });
     })
     .catch(error => console.error('Error:', error));
@@ -86,18 +107,4 @@ document.addEventListener("click", async function(e) {
         }
     }
 });
-
-// Identificación de usuario (Login)
-const urlParams = new URLSearchParams(window.location.search);
-const countryId = urlParams.get('id');
-const formElement = document.getElementById('dataForm');
-const buttonElements = document.querySelectorAll('.countries__card--info');
-
-if (countryId == 0) {
-    formElement.style.display = 'none';
-
-    buttonElements.forEach(btn => {
-        btn.style.display = 'none';
-    });
-}
 

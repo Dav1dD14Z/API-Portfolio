@@ -13,6 +13,16 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const data = await response.json();
 
     if (response.ok) {
-        window.location.href = "../Pages/countries.html?id=" + data.status;
+        window.location.href = "../Pages/countries.html";
+        localStorage.setItem("status", data.status);
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Lo sentimos!",
+            text: "El usuario o la contraseña son incorrectos.",
+            confirmButtonText: "Intentar de nuevo",
+            confirmButtonColor: "#3085d6",
+            timer: 3000,
+        });
     }
 });
