@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Request, Form, status
 from fastapi.responses import JSONResponse
-from models.countries import Countrie
+from models.countries import Countrie, Login, User
 from fastapi.middleware.cors import CORSMiddleware
 
 import sqlite3
@@ -120,3 +120,89 @@ def eliminar_pais(countrie_id: int):
     conn.close()
     
     return {"message": f"País con ID {countrie_id} eliminado correctamente"}
+
+
+
+# Usuarios
+
+@app.get("/create_users_db")
+def create_db():
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            password TEXT NOT NULL,
+            status TEXT NOT NULL
+        )''')
+    conn.commit()
+    conn.close()
+    return {"message": "Database created successfully"}, status.HTTP_201_CREATED
+
+@app.post("/adding/")
+def crear_producto(user: User):
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO users (username, password, status) VALUES (?,?,?)
+    ''', (user.username, user.password, user.status))
+    conn.commit()
+    conn.close()
+    return {
+        "message": "Producto creado correctamente",
+        "data": user.dict()
+    }
+
+@app.get("/users/")
+def listar_users():
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, username, password, status FROM users')
+    users = cursor.fetchall()
+    conn.close()
+    return {
+        "data": [{"id": row[0], "username": row[1], "password": row[2], "status": row[3]} for row in users]
+    }
+
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int):
+    conn = sqlite3.connect('usuarios.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT id FROM users WHERE id = ?', (user_id,))
+    if cursor.fetchone() is None:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+    
+    cursor.execute('DELETE FROM users WHERE id = ?', (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return {"message": f"Usuario con ID {user_id} eliminado correctamente"}
+
+
+
+# Login
+@app.post("/login")
+def login(data: Login):
+    conn = sqlite3.connect("usuarios.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT id, username, password, status FROM users WHERE username = ?", (data.username,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        raise HTTPException(status_code=400, detail="Usuario no encontrado")
+
+    stored_password = user[2]
+    status = user[3]
+
+    if stored_password != data.password:
+        raise HTTPException(status_code=400, detail="Contraseña incorrecta")
+
+    if status == 0:
+        return {"message": "Acceso restringido. Usuario inactivo.", "status": 0}
+
+    return {"message": "Login exitoso", "status": user[3], "user_id": user[0]}

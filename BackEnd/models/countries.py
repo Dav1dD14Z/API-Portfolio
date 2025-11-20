@@ -16,3 +16,12 @@ class Countrie(BaseModel):
     img6: constr(strip_whitespace=True, max_length=500) = Field(None, description="URL de la bandera del país")
     img7: constr(strip_whitespace=True, max_length=500) = Field(None, description="URL de la bandera del país")
     BckImage: constr(strip_whitespace=True, max_length=500) = Field(None, description="URL de la bandera del país")
+
+class User(BaseModel):
+    username: constr(strip_whitespace=True, min_length=3, max_length=50) = Field(..., description="Nombre de usuario")
+    password: constr(strip_whitespace=True, min_length=6) = Field(..., description="Contraseña del usuario")
+    status: conint(ge=0, le=1) = Field(1, description="Estado del usuario (0: inactivo, 1: activo)")
+
+class Login(BaseModel):
+    username: str
+    password: str
