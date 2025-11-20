@@ -13,6 +13,6 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
     const data = await response.json();
 
     if (response.ok) {
-        window.location.href = "../Pages/countries.html?" + data.status;
+        window.location.href = "../Pages/countries.html?id=" + data.status;
     }
 });

@@ -87,3 +87,17 @@ document.addEventListener("click", async function(e) {
     }
 });
 
+// Identificación de usuario (Login)
+const urlParams = new URLSearchParams(window.location.search);
+const countryId = urlParams.get('id');
+const formElement = document.getElementById('dataForm');
+const buttonElements = document.querySelectorAll('.countries__card--info');
+
+if (countryId == 0) {
+    formElement.style.display = 'none';
+
+    buttonElements.forEach(btn => {
+        btn.style.display = 'none';
+    });
+}
+
